@@ -44,16 +44,21 @@ public class SiteNavigationPractice {
         //Click on the shopping cart button
         driver.findElement(By.xpath("//*[@id=\"shopping_cart_container\"]/a")).click();
 
+        //Click on the checkout button
         driver.findElement(By.cssSelector("#checkout")).click();
 
+        //Input values into the form
         driver.findElement(By.cssSelector("#first-name")).sendKeys("Firstname");
         driver.findElement(By.cssSelector("#last-name")).sendKeys("Lastname");
         driver.findElement(By.cssSelector("#postal-code")).sendKeys("12345");
 
+        //Click on the continue button
         driver.findElement(By.xpath("//*[@id=\"continue\"]")).click();
 
+        //Click on the finish button
         driver.findElement(By.id("finish")).click();
 
+        //Assert that the container with the selector #checkout_complete_container is displayed
         Assert.assertTrue(driver.findElement(By.cssSelector("#checkout_complete_container")).isDisplayed());
     }
 }
