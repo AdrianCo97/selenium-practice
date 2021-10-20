@@ -1,5 +1,5 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.BeforeClass;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,16 +7,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class HelloSeleniumTest {
+    WebDriver driver;
 
+   @Before
+   public void setUp(){
+       System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
+       driver = new ChromeDriver();
+   }
 
-    @BeforeClass
-    public static void setupClass(){
-        WebDriverManager.chromedriver().setup();
-    }
+   @After
+   public void tearDown(){
+       driver.quit();
+   }
 
     @Test
     public void firstTest(){
-        WebDriver driver = new ChromeDriver();
         driver.get("https://www.saucedemo.com/");
 
         WebElement element;
@@ -36,7 +41,5 @@ public class HelloSeleniumTest {
 
         //finds the element with the xpath //*[@id="user-name"]
         driver.findElement(By.xpath("//*[@id=\"user-name\"]"));
-
-        driver.quit();
     }
 }
