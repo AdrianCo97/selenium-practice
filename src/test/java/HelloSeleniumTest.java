@@ -14,7 +14,7 @@ public class HelloSeleniumTest {
     @Test
     public void firstTest(){
         WebDriver driver = new ChromeDriver();
-        driver.get("");
+        driver.get("https://www.saucedemo.com/");
         driver.quit();
     }
 }
