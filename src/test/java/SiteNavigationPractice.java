@@ -1,4 +1,5 @@
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -43,5 +44,16 @@ public class SiteNavigationPractice {
         //Click on the shopping cart button
         driver.findElement(By.xpath("//*[@id=\"shopping_cart_container\"]/a")).click();
 
+        driver.findElement(By.cssSelector("#checkout")).click();
+
+        driver.findElement(By.cssSelector("#first-name")).sendKeys("Firstname");
+        driver.findElement(By.cssSelector("#last-name")).sendKeys("Lastname");
+        driver.findElement(By.cssSelector("#postal-code")).sendKeys("12345");
+
+        driver.findElement(By.xpath("//*[@id=\"continue\"]")).click();
+
+        driver.findElement(By.id("finish")).click();
+
+        Assert.assertTrue(driver.findElement(By.cssSelector("#checkout_complete_container")).isDisplayed());
     }
 }
