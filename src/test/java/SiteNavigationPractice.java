@@ -1,6 +1,7 @@
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -26,5 +27,14 @@ public class SiteNavigationPractice {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
         driver.get("https://www.saucedemo.com/");
+
+        //Login
+        //username input
+        driver.findElement(By.cssSelector("#user-name")).sendKeys("standard_user");
+        //password input
+        driver.findElement(By.cssSelector("#password")).sendKeys("secret_sauce");
+        //Click the Login button
+        driver.findElement(By.cssSelector("#login-button")).click();
+        
     }
 }
