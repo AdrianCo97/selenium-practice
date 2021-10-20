@@ -26,7 +26,7 @@ public class HelloSeleniumTest {
 
         WebElement element;
 
-        element = driver.findElement(By.id("user-name"));
+        element = driver.findElement(By.id("user-named"));
 
         //driver.findElement(By.name("name of locator"));
 
