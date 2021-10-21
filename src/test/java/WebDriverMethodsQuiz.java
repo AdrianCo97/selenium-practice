@@ -55,8 +55,6 @@ public class WebDriverMethodsQuiz {
         element = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[1]/div/h5"));
 
         //assert that element is displayed
-        Assert.assertTrue(element.isDisplayed());
-
-
+        Assert.assertTrue("The text 'user1' should appear once the test hovers over the img ", element.isDisplayed());
     }
 }
