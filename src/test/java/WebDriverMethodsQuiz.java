@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 public class WebDriverMethodsQuiz {
 
@@ -39,5 +40,23 @@ public class WebDriverMethodsQuiz {
 
         Assert.assertTrue(option1.isSelected());
         Assert.assertFalse(option2.isSelected());
+    }
+
+    @Test
+    public void hover(){
+        driver.get("http://the-internet.herokuapp.com/hovers");
+        element = driver.findElement(By.className("figure"));
+        Actions actions = new Actions(driver);
+
+        //move to element figure
+        actions.moveToElement(element).perform();
+
+        //find the h5 element
+        element = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[1]/div/h5"));
+
+        //assert that element is displayed
+        Assert.assertTrue(element.isDisplayed());
+
+
     }
 }
