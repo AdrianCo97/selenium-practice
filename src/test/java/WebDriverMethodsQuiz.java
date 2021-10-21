@@ -57,4 +57,17 @@ public class WebDriverMethodsQuiz {
         //assert that element is displayed
         Assert.assertTrue("The text 'user1' should appear once the test hovers over the img ", element.isDisplayed());
     }
+
+    @Test
+    public void rightClick(){
+        driver.navigate().to("http://the-internet.herokuapp.com/context_menu");
+        element = driver.findElement(By.id("hot-spot"));
+        Actions actions = new Actions(driver);
+
+        //perform a right click on the element
+        actions.contextClick(element).perform();
+
+        //Switch to the alert window and click accept
+        driver.switchTo().alert().accept();
+    }
 }
