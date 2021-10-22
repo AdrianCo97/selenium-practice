@@ -3,6 +3,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -60,7 +61,7 @@ public class WebDriverMethodsQuiz {
 
     @Test
     public void rightClick(){
-        driver.navigate().to("http://the-internet.herokuapp.com/context_menu");
+        driver.get("http://the-internet.herokuapp.com/context_menu");
         element = driver.findElement(By.id("hot-spot"));
         Actions actions = new Actions(driver);
 
@@ -69,5 +70,24 @@ public class WebDriverMethodsQuiz {
 
         //Switch to the alert window and click accept
         driver.switchTo().alert().accept();
+    }
+
+    @Test
+    public void keyPresses(){
+        driver.get("http://the-internet.herokuapp.com/key_presses");
+        element = driver.findElement(By.id("target"));
+        //click on the target
+        element.click();
+
+        //Press the right arrow key
+        Actions actions = new Actions(driver);
+        actions
+                .sendKeys(Keys.ARROW_RIGHT).
+                pause(1000).
+                perform();
+
+        element = driver.findElement(By.id("result"));
+        Assert.assertEquals("You entered: RIGHT", element.getText());
+
     }
 }
