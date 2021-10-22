@@ -44,14 +44,19 @@ public class LjudioTest {
        //SearchPage
        element = driver.findElement(By.xpath("//*[@class='input']"));
 
+       //Search for a song
        element.sendKeys("My friends over you");
 
+       //Click on the search button
        driver.findElement(By.xpath("//*[@class='search-button']")).click();
 
+       //Wait for result
        Thread.sleep(1000);
 
+       //Find the first result
        element = driver.findElement(By.xpath("//*[@id='0']"));
 
+       //Match the expected value with the result
        Assert.assertEquals("My Friends Over You", element.findElement( By.className("song-name")).getText());
 
        Thread.sleep(1000);
