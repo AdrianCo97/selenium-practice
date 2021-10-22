@@ -27,6 +27,7 @@ public class LjudioTest {
     @Test
     public void loginTest() throws InterruptedException{
 
+        //Login
         driver.get("http://localhost:3000/");
        driver.findElement(By.id("email")).sendKeys("test@test.com");
        driver.findElement(By.id("password")).sendKeys("password");
@@ -40,6 +41,20 @@ public class LjudioTest {
 
        Assert.assertTrue("Assert that the input for searching for songs/artists is displayed.", element.isDisplayed());
 
-    }
+       //SearchPage
+       element = driver.findElement(By.xpath("//*[@class='input']"));
 
+       element.sendKeys("My friends over you");
+
+       driver.findElement(By.xpath("//*[@class='search-button']")).click();
+
+       Thread.sleep(1000);
+
+       element = driver.findElement(By.xpath("//*[@id='0']"));
+
+       Assert.assertEquals("My Friends Over You", element.findElement( By.className("song-name")).getText());
+
+       Thread.sleep(1000);
+
+    }
 }
