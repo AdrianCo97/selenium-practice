@@ -25,7 +25,7 @@ public class LjudioTest {
     }
 
     @Test
-    public void loginTest(){
+    public void loginTest() throws InterruptedException{
 
         driver.get("http://localhost:3000/");
        driver.findElement(By.id("email")).sendKeys("test@test.com");
@@ -34,11 +34,11 @@ public class LjudioTest {
        element = driver.findElement(By.xpath("//*[@id=\"root\"]/form/button"));
        element.click();
 
-       element = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/input"));
+       Thread.sleep(1000);
 
-        Assert.assertTrue("Assert that the input for searching for songs/artists is displayed.", element.isDisplayed());
+       element = driver.findElement(By.xpath("//*[@class='input']"));
 
-
+       Assert.assertTrue("Assert that the input for searching for songs/artists is displayed.", element.isDisplayed());
 
     }
 
