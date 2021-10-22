@@ -90,4 +90,17 @@ public class WebDriverMethodsQuiz {
         Assert.assertEquals("You entered: RIGHT", element.getText());
 
     }
+
+    @Test
+    public void getCssValue(){
+        driver.navigate().to("http://ultimateqa.com/simple-html-elements-for-automation/");
+        element = driver.findElement(By.linkText("Clickable Icon"));
+
+        //Get the value from the href attribute
+        String link = element.getAttribute("href");
+
+        Assert.assertEquals("Assert that the link leads to 'https://ultimateqa.com/link-success/'","https://ultimateqa.com/link-success/", link);
+
+        Assert.assertEquals("padding-box", element.getCssValue("background-origin"));
+    }
 }
