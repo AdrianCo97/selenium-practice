@@ -37,5 +37,17 @@ public class JavascriptTests {
             Assert.assertTrue(driver.findElement(By.xpath("//*[@for='password1']")).getAttribute("style").contains("color: orange"));
 
         }
+        
+        @Test
+        public void cookieTest(){
+            driver.get("https://example.cypress.io/commands/cookies");
+            element = driver.findElement(By.cssSelector(".set-a-cookie"));
+
+            element.click();
+
+            var cookie = driver.manage().getCookieNamed("token");
+
+            Assert.assertEquals(cookie.getValue(), "123ABC");
+        }
 
 }
